@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Cupom</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .message {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 id="titulo">Verifique seu cupom</h1>
+        <input type="text" id="cupomInput" placeholder="Digite o código do cupom">
+        <button id="verificarBtn" onclick="verificarCupom()">Verificar</button>
+        <p id="resposta" class="message"></p>
+    </div>
+
+    <script>
+        // Definindo o cupom válido
+        const cupomValido = "diadecomprar";
+
+        // Função que verifica o cupom digitado
+        function verificarCupom() {
+            const cupomDigitado = document.getElementById('cupomInput').value.trim();
+            const titulo = document.getElementById('titulo');
+            const resposta = document.getElementById('resposta');
+            const verificarBtn = document.getElementById('verificarBtn');
+
+            if (cupomDigitado === cupomValido) {
+                // Caso o cupom seja válido
+                titulo.textContent = "Cupom Válido!";
+                resposta.textContent = "Parabéns! O seu cupom foi aceito.";
+                verificarBtn.textContent = "Cupom Aceito!";
+                verificarBtn.style.backgroundColor = "#28a745";
+            } else {
+                // Caso o cupom seja inválido
+                titulo.textContent = "Cupom Inválido!";
+                resposta.textContent = "Tente novamente com um cupom válido.";
+                verificarBtn.textContent = "Tentar Novamente";
+                verificarBtn.style.backgroundColor = "#dc3545";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
